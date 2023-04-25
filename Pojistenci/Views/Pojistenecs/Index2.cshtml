@@ -1,0 +1,87 @@
+﻿@model Pojistenci.Models.PojistenecPojisteniViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+     .btn:hover{ transition: transform .5s;transform: scale(1.1);box-shadow:5px 5px 8px black;}
+    tr {transition: background 2s ease; }
+    tr:hover{background:lightgray;} 
+    img {position: absolute;  top: 60px;left:600px;width:100px;height:100px;}
+</style>
+<h3>Hledání pojištenců dle typu pojištění</h3><img src="~/Images/csob.png" />
+
+<p>
+    <a asp-action="Index" class="btn btn-primary btn-sm">Zpět na seznam pojištěnců</a>
+</p>
+<form asp-controller="Pojistenecs" asp-action="Index2" method="get">
+    <p>
+
+        Dle typu pojištění: <select asp-for="TypPojisteni" asp-items="Model.TypyPojisteni">
+            <option value="">All</option>
+        </select>
+        <input type="submit" value="Vyhledat" class="btn btn-success btn-sm"/>
+    </p>
+</form><hr />
+
+<table class="table" id="tt">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pojistenci[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pojistenci[0].Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pojistenci[0].Vek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pojistenci[0].Registrovan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pojistenci[0].Kraj)
+            </th>
+            <th>
+              
+               @Html.DisplayNameFor(model => model.Pojistenci[0].TypPojisteni.Nazev)
+                
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Pojistenci)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vek)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Registrovan)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.Kraj)
+                </td>
+                <td >             
+                    @Html.DisplayFor(modelItem => item.TypPojisteniId)
+                </td>
+                <td>
+                    <div>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm" >Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+               

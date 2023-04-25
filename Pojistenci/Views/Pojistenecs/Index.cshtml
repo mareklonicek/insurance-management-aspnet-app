@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Pojistenci.Models.Pojistenec>
+
+@{
+    ViewData["Title"] = "Index";
+}
+  
+<style>
+   #posunuto{margin-left:73px;}
+     .btn:hover{ transition: transform .5s;transform: scale(1.1);box-shadow:5px 5px 8px black;}
+    tr {transition: background 1s ease; }
+    tr:hover{background:lightgray;}
+    li {display: inline;justify-content:flex-start}
+    ul{display:flex;}
+      img {position: absolute;  top: 60px;left:600px;width:100px;height:100px;}
+</style>
+
+<h1>Pojištenci</h1><img src="~/Images/csob.png" /></div><br />
+<div id="posunuto">
+    <ul>
+        <li>
+<form method="post" asp-controller="Pojistenecs" asp-action="Index">
+        Dle příjmení: <input type="text" name="SearchPrijmeni" placeholder="zadejte příjmení..."/>
+        <input onclick="bb()" type="submit" value="Vyhledat" class="btn btn-success btn-sm"/> 
+    </form>
+    </li>
+    <li>
+<form method="post" asp-controller="Pojistenecs" asp-action="Index3">
+   <span visibility:hidden style="color:white;">----</span>Dle kraje: <input type="text" name="SearchKraj" placeholder="zadejte kraj..."/>
+        <input onclick="bb()" type="submit" value="Vyhledat" class="btn btn-success btn-sm"/>
+        </form>
+        </li>
+        <li><span visibility:hidden style="color:white;">----------</span>
+        <a asp-action="Index" class="btn btn-primary btn-sm">Zpět na seznam pojištenců</a>
+        </li>
+         </ul>
+ <a asp-action="Index2" class="btn btn-success btn-sm" >Hledání pojištenců dle typu pojištění</a>
+ 
+
+    <br /><br />
+    <a asp-action="Create" class="btn btn-info btn-sm mb-3">Zaregistruj nového pojištence</a>
+    <br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Registrovan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kraj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypPojisteni.Nazev)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Vek)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Registrovan)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Kraj)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.TypPojisteni.Nazev)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-success btn-sm">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+</div>
+        

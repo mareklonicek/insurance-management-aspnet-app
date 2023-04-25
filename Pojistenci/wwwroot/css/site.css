@@ -1,0 +1,27 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+td:nth-child(2) {
+    transition: color 0.3s ease,background 4s ease;
+}
+
+    td:nth-child(2):hover {
+        background: darkslategray;
+        color: white;
+    }

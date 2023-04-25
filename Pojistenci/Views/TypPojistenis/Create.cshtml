@@ -1,0 +1,40 @@
+﻿@model Pojistenci.Models.TypPojisteni
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+     .btn:hover{ transition: transform .5s;transform: scale(1.1);box-shadow:5px 5px 8px black;}
+    tr {transition: background 2s ease; }
+    tr:hover{background:lightgray;} 
+    li {display: inline;justify-content:flex-start}
+    ul{display:flex;}
+      img {position: absolute;  top: 60px;left:600px;width:100px;height:100px;}
+</style>
+<h1>Create</h1>
+
+<h4>TypPojisteni</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nazev" class="control-label"></label>
+                <input asp-for="Nazev" class="form-control" />
+                <span asp-validation-for="Nazev" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-sm mt-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary btn-sm mt-2">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

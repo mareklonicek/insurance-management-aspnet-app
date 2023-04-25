@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/jokeswebapp-2dbserver/databases/pojistenci",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:PojistenciContext",
+      "dynamicId": null
+    },
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/jokeswebapp-2dbserver/databases/pojistenci",
+      "type": "mssql.azure",
+      "connectionId": "DefaultConnection"
+    },
+    "mssql3": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/jokeswebapp-2dbserver/databases/pojistenci2",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "dynamicId": null
+    }
+  }
+}
